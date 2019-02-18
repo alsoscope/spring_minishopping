@@ -1,0 +1,22 @@
+DB 상품 테이블 생성 및 레코드 입력 SQL 상품번호 기본키 설정
+
+use spring_ex;
+
+create table tbl_product(
+	product_id int not null auto_increment primary key,
+	product_name varchar(30) not null,
+	product_price int default 0 not null,
+	product_desc varchar(300) not null,
+	product_url varchar(300) not null
+);
+
+dummy record
+
+insert into tbl_product(product_name, product_price, product_desc, product_url) values ('상품이름1',10000,'상품 설명1','photo1.jpg');
+insert into tbl_product(product_name, product_price, product_desc, product_url) values ('상품이름2',20000,'상품 설명2','photo2.jpg');
+insert into tbl_product(product_name, product_price, product_desc, product_url) values ('상품이름3',30000,'상품 설명3','photo3.jpg');
+insert into tbl_product(product_name, product_price, product_desc, product_url) values ('상품이름4',40000,'상품 설명4','photo4.jpg');
+insert into tbl_product(product_name, product_price, product_desc, product_url) values ('상품이름5',50000,'상품 설명5','photo5.jpg');
+insert into tbl_product(product_name, product_price, product_desc, product_url) values ('상품이름6',60000,'상품 설명6','photo6.jpg');
+
+select * from tbl_product;
