@@ -32,8 +32,12 @@
 					<tr align="center">
 						<td colspan="2">
 							
+							<!-- 상품을 장바구니에 추가시키기 위해 상품id번호, 수량을 form태그 전송 -->
 							<form name="form1" method="post" action="${path}/shop/cart/insert.do">
+								<!-- 현재의 상품id를 입력받기 위해 hidden속성으로 처리 -->
 								<input type="hidden" name="product_id" value="${vo.product_id }">
+								
+								<!-- select태그를 forEach문으로 1~10까지 수량을 선택할 수 있도록 처리 -->
 								<select name="amount">
 									<c:forEach begin="1" end="10" var="i">
 										<option value="${i}">${i}</option>

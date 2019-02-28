@@ -3,6 +3,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
+	<!-- Deployment Descriptor : 배치 기술서. 설정을 위한 설정파일.
+	이 파일은 WAS(Web Application Server)=톰캣이 최초 구동될 때, web.xml을 읽고 해당하는 설정을 구성한다
+	각종 설정을 위한 설정파일 -->
+
 	<!-- 인코딩 필터 추가 -->
 	<filter>
 		<filter-name>characterEncodingFilter</filter-name>
@@ -26,20 +30,24 @@
 	</filter-mapping>
 	<!-- 인코딩 필터 추가 -->
 	
+	<!-- 루트 컨텍스트로써 모든 서블릿과 필터들이 공유함 -->
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
 	</context-param>
 	
+	<!-- 리스너로써 루트 컨텍스트에 정의 된 것들을 모든 서블릿, 필터가 공유할 수 있게 함-->
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
+	<!-- 서블릿 설정 -->
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
+		<!-- DispatcherServlet으로 앞단에서 요청정보를 핸들링 해줌 - servlet-context.xml -->
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
@@ -47,7 +55,8 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-		
+	
+	<!-- appServlet에 대한 url-pattern을 정의 -->
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
