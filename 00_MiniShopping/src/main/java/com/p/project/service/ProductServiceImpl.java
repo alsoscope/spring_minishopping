@@ -34,7 +34,19 @@ public class ProductServiceImpl implements ProductService{
 
 	//4. 상품 삭제
 	@Override
-	public void deleteProduct(ProductDTO_VO vo) {
+	public void deleteProduct(int product_id) {
+	}
+
+	//5. 상품 등록
+	@Override
+	public void insertProduct(ProductDTO_VO vo) {
+		productDao.insertProduct(vo);
+	}
+
+	//6. 상품 이미지 삭제 위한 이미지 파일 정보
+	@Override
+	public String fileInfo(int product_id) {
+		return productDao.fileInfo(product_id);
 	}
 
 }

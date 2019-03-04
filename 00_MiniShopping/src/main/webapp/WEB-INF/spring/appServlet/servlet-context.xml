@@ -27,6 +27,18 @@
 	
 	<context:component-scan base-package="com.p.project" />
 	
-	
+	<!-- AdminLogin 세션 체크 Interceptor 설정 bean 등록 -->
+	<beans:bean id="adminloginInterceptor" class="com.p.project.interceptor.AdminInterceptor"></beans:bean>
+		<interceptors>
+		<!-- 관리자 세션체크 매핑 -->
+			<interceptor>
+				<mapping path="/shop/product/write.do"/>
+				<mapping path="/shop/product/insert.do"/>
+				<mapping path="/shop/product/update.do"/>
+				<mapping path="/shop/product/edit/**"/>
+				<mapping path="/shop/product/delete.do"/>
+				<beans:ref bean="adminloginInterceptor" />
+			</interceptor>
+		</interceptors>
 	
 </beans:beans>

@@ -17,4 +17,10 @@ public interface ProductDAO {
 	
 	//4.상품 삭제
 	public void deleteProduct(int Product_id);
+	
+	//5. 상품추가
+	public void insertProduct(ProductDTO_VO vo);
+	
+	//6. 상품 이미지 삭제 위한 이미지 파일 정보
+	public String fileInfo(int product_id);
 }
